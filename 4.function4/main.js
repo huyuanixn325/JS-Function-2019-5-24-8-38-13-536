@@ -1,16 +1,15 @@
- function countWords(message){
+function countWords(message){
         // wirte your code here
         var flag = 0;
         var count = 0;
-        for(var i=0;i<message.length;i++){
-            if(message.charCodeAt(i)==32){
-                flag = 1;
-            }
-            if (flag == 1){
-                count++;
-                flag = 0;
+        var regEx = /\s+/g;
+        var test=message.replace(regEx,",");
+        var numtest=test.split(",");
+        for (var i=0;i<numtest.length;i++){
+            if(numtest[i]!=null&&numtest[i]!=" "&&numtest[i].length>0){
+               count++;
             }
         }
-        return (count+1);
+        return count;
     }
-    alert(countWords('Good morning, I love JavaScript.')); // should return 5
+    alert(countWords('Good morning,I love JavaScript.')); // should return 5
